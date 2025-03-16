@@ -73,16 +73,16 @@ namespace rsr {
 	complex complex::operator+(const complex &z) const {
 		
 		complex result(*this);
-		
 		result += z;
+		
 		return result;
 		
 	}
 	complex complex::operator-(const complex &z) const {
 		
 		complex result(*this);
-		
 		result -= z;
+		
 		return result;
 		
 	}
@@ -97,8 +97,8 @@ namespace rsr {
 	complex complex::operator/(const complex &z) const {
 		
 		complex result(*this);
-		
 		result /= z;
+		
 		return result;
 		
 	}
@@ -119,7 +119,14 @@ namespace rsr {
 		this->imag = r_tt_c_e_tt_neg_d_theta * std::sin(c_theta + d_ln_r);
 		
 	}
-	complex complex::operator^(const complex &z) const;
+	complex complex::operator^(const complex &z) const {
+		
+		complex result(*this);
+		result ^= z;
+		
+		return result;
+		
+	}
 
 	/* complex conjugate */
 	complex complex::operator~() const {
