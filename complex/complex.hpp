@@ -1,4 +1,12 @@
-#include <cmath> // For trig functions
+#pragma once
+
+/* For trig functions */
+#include <cmath>
+/* For overloading ostream << for printing */
+#include <ostream>
+/* to_string() */
+#include <sstream>
+#include <string>
 
 namespace rsr {
 	
@@ -15,6 +23,8 @@ namespace rsr {
 		complex(double real);
 		complex(double real, double imag);
 		complex(const &z);
+		
+		std::string to_string() const;
 		
 		double real() const;
 		double &real();
@@ -50,6 +60,13 @@ namespace rsr {
 		
 		
 	}
+	
+}
+
+inline std::ostream &operator<<(std::ostream &os, const complex &z) {
+	
+	os << z.to_string();
+	return os;
 	
 }
 
