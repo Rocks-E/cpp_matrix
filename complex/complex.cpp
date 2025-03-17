@@ -1,4 +1,4 @@
-#include "rsr::complex.hpp"
+#include "complex.hpp"
 
 namespace rsr {
 
@@ -7,7 +7,7 @@ namespace rsr {
 	complex::complex(double real, double imag) : real(real), imag(imag) {};
 	complex::complex(const complex &z) : real(z.real), imag(z.imag) {};
 
-	std::string to_string() const {
+	std::string complex::to_string() const {
 		
 		std::stringstream sstream;
 		
@@ -160,19 +160,19 @@ namespace rsr {
 
 /* Overloads for real numbers on the LHS, complex on the RHS */
 rsr::complex operator+(const double a, const rsr::complex &z) {
-	return complex(a) + z;
+	return rsr::complex(a) + z;
 }
 rsr::complex operator-(const double a, const rsr::complex &z) {
-	return complex(a) - z;
+	return rsr::complex(a) - z;
 }
 rsr::complex operator*(const double a, const rsr::complex &z) {
-	return complex(a) * z;
+	return rsr::complex(a) * z;
 }
 rsr::complex operator/(const double a, const rsr::complex &z) {
-	return complex(a) / z;
+	return rsr::complex(a) / z;
 }
 rsr::complex operator^(const double a, const rsr::complex &z) {
-	return complex(a) ^ z;
+	return rsr::complex(a) ^ z;
 }
 
 bool operator==(const double a, const rsr::complex &z) {

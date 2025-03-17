@@ -59,7 +59,7 @@ namespace rsr {
 		bool operator<(const complex &z) const;
 		bool operator>(const complex &z) const;
 		
-	}
+	};
 	
 }
 
