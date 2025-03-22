@@ -7,6 +7,9 @@
 /* to_string() */
 #include <sstream>
 #include <string>
+#include <limits>
+
+#define COMPLEX_MAX (rsr::complex(std::numeric_limits<double>::max(), std::numeric_limits<double>::max()))
 
 namespace rsr {
 	

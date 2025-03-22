@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <exception>
 #include <cinttypes>
 #include <cstdlib>
 #include "../complex/complex.hpp"
@@ -62,15 +63,35 @@ namespace rsr {
 			
 		}
 		
-		complex operator[](int64_t index) const {
+		// Const version of below function
+		complex at(size_t index) const {
+			return this->at(index);
+		}
+		
+		// Uses bounds checking, does not support negative indexes
+		complex &at(size_t index) {
+			
+			if(index >= N)
+				throw std::out_of_range("Index out of range");
+			
+			return this->data[index];
+			
+		}
+		
+		// Const version of [] operator
+		complex operator[](int32_t index) const {
 			return (*this)[index];
 		}
 
-		complex &operator[](int64_t index) {
+		// Supports negative indexes and wrapping because it seems like that could be useful in some situations
+		complex &operator[](int32_t index) {
 			
-			size_t adjusted_index = static_cast<size_t>((index < 0) ? N - index : index);
+			// Wrap around
+			index = index % static_cast<int32_t>(N);
+			// For negative numbers, add them to the 
+			size_t adjusted_index = static_cast<size_t>((index < 0) ? (N + index) : index);
 			
-			return (adjusted_index < N) ? this->data[adjusted_index] : COMPLEX_MAX;
+			return this->data[adjusted_index];
 			
 		}
 		
